@@ -9,6 +9,8 @@ export default class Feedback extends Component {
     good: this.props.initialValue,
     neutral: this.props.initialValue,
     bad: this.props.initialValue,
+    total: this.props.initialValue,
+    percentage: this.props.initialValue,
   };
 
   handleIncrementGood = () => {
@@ -25,7 +27,14 @@ export default class Feedback extends Component {
     this.setState((state, props) => ({
       bad: state.bad + props.step,
     }));
+
+    calculateTotal = () => {
+      this.setState((state) => ({
+        total: state.good + state.neutral + state.bad,
+      }));
+    };
   };
+  calculatePercentage = () => {};
   render() {
     return (
       <div>
@@ -47,6 +56,8 @@ export default class Feedback extends Component {
             <li>Good: {this.state.good} </li>
             <li>Neutral: {this.state.neutral}</li>
             <li>Bad: {this.state.bad}</li>
+            <li>Total: {this.state.total}</li>
+            <li>Positive feedback: {this.state.percentage}%</li>
           </ul>
         </div>
       </div>
