@@ -13,7 +13,7 @@ export class App extends Component {
     percentage: 0,
   };
 
-  // update the state when a button is clicked
+  // update the state when a button is clicked [state] - computed property
   handleIncrement = (state) => {
     this.setState((prev) => ({ [state]: prev[state] + 1 }));
   };
